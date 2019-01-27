@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import datetime
 import rospy
 from sensor_msgs.msg import LaserScan
@@ -21,7 +20,6 @@ def talker():
     rate = rospy.Rate(hz)
     rospy.loginfo("Node started")
     while not rospy.is_shutdown():
-	msg = rospy.Subscriber('scan',LaserScan,callback)
 	i = 0
 	temp = []
 	#removes every half degree from the scan
@@ -29,10 +27,9 @@ def talker():
 		temp.append(dataarr[i])
 		i+=2
 	sensor_data_str ="'" + str(datetime.datetime.utcnow()) + "' , '{" +str(temp)[1:-1]+ "}'"
-	n+= 1
+	n += 1
         pub.publish(sensor_data_str)
         rate.sleep()
-
 
 if __name__ == '__main__':
     try:

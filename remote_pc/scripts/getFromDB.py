@@ -7,13 +7,14 @@ import rospy #ros::ros
  
 def main():
 	# Connect to an existing database
-	conn = psycopg2.connect("dbname=testdb user=willow password=willow")
+	conn = psycopg2.connect("dbname = testdb user = willow password = willow")
 
 	# Open a cursor to perform database operations
 	cur = conn.cursor()
 
 	# Query the database and obtain data as Python objects
-	cur.execute("SELECT * FROM hej;")
+	query = "SELECT * FROM hej;"
+	cur.execute(query)
 	row = cur.fetchall()
 	#for rows in row:
 		#print "   ", rows[0]
@@ -26,7 +27,6 @@ def main():
 	cur.close()
 	conn.close()
 	return row
-
 
 if __name__ == "__main__":
 	main()
