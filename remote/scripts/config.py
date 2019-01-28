@@ -3,8 +3,13 @@ import psycopg2.extras
 import sys
 import rospy 
 
+host = 'localhost'
+dbname =  'testdb'
+user = 'willow' 
+password = 'willow'
+
 def dbconfig():
-	conn_string = "host = 'localhost' dbname = 'testdb' user = 'willow' password = 'willow'"
+	conn_string = "host = " + host + " dbname = " + dbname + " user = " + user + " password = " + password
 	print "Connecting to database\n	->%s" % (conn_string)
 	conn = psycopg2.connect(conn_string)
 	cursor = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
@@ -16,5 +21,5 @@ def dbconfig():
 	print "Row:	", memory
 
 def dbconfiglite():
-    conn_string = "host = 'localhost' dbname = 'testdb' user = 'willow' password = 'willow'"
-    return conn_string
+	conn_string = "host = " + host + " dbname = " + dbname + " user = " + user + " password = " + password
+	return conn_string

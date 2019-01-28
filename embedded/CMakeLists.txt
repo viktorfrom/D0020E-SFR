@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(remote_pc)
+project(embedded)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -11,7 +11,6 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  genmsg
 )
 
 ## System dependencies are found with CMake's conventions
@@ -198,5 +197,3 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-
-

@@ -1,5 +1,5 @@
-#This script can print all the data from database and can be used as a getter
 #!/usr/bin/python
+#This script can print all the data from database and can be used as a getter
 import psycopg2
 import psycopg2.extras
 import sys

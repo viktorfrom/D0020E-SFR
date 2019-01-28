@@ -15,8 +15,8 @@ def talker():
     hz = 22
     n = 0
     global dataarr
-    pub = rospy.Publisher('laser', String, queue_size=10)
-    rospy.init_node('talker', anonymous=True)
+    pub = rospy.Publisher('laser', String, queue_size = 10)
+    rospy.init_node('talker', anonymous = True)
     rate = rospy.Rate(hz)
     rospy.loginfo("Node started")
     while not rospy.is_shutdown():
@@ -25,8 +25,8 @@ def talker():
 	#removes every half degree from the scan
 	while(i < len(dataarr)):
 		temp.append(dataarr[i])
-		i+=2
-	sensor_data_str ="'" + str(datetime.datetime.utcnow()) + "' , '{" +str(temp)[1:-1]+ "}'"
+		i += 2
+	sensor_data_str ="'" + str(datetime.datetime.utcnow()) + "' , '{" +str(temp)[1: -1]+ "}'"
 	n += 1
         pub.publish(sensor_data_str)
         rate.sleep()

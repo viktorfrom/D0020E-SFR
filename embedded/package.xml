@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>embeded_pc</name>
+  <name>embedded</name>
   <version>0.0.0</version>
-  <description>The FWARM embeded pc package</description>
+  <description>D0020E FWARM  embedded pc package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="jenger-5@student.ltu.se">grupp2</maintainer>
+  <maintainer email="jenger-5@student.ltu.se">Grupp2</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->

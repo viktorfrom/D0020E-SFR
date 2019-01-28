@@ -1,11 +1,10 @@
 #!/usr/bin/env python
-
 import rospy
 import psycopg2
 import psycopg2.extras
 import sys
 import time
-import config.py
+import config
 from std_msgs.msg import String
 from datetime import datetime
 from datetime import timedelta
@@ -18,13 +17,13 @@ interval = timedelta(seconds = 100)
 timeConv = '%Y-%m-%d %H:%M:%S.%f'
 
 def talker():
-    pub = rospy.Publisher('replay', String, queue_size=10)
+    pub = rospy.Publisher('replay', String, queue_size = 10)
     rospy.init_node('talker', anonymous=True)
     rate = rospy.Rate(5) # 100hz
 
     query = ('SELECT timestamp' 
              'FROM lidarData' 
-             'WHERE timestamp >= ' +str(lastTime)+ 'AND timestamp <' + str(lastTime + interval) + ';')
+             'WHERE timestamp >= ' + str(lastTime) + 'AND timestamp <' + str(lastTime + interval) + ';')
     cursor.execute(query)
     timeArr = cursor.fetchall()
 
@@ -34,7 +33,7 @@ def talker():
 
     query = ('SELECT timestamp'
              'FROM lidarData' 
-             'WHERE timestamp >= ' +str(lastTime)+ 'AND timestamp <' + str(lastTime + interval) + ';')
+             'WHERE timestamp >= ' + str(lastTime) + 'AND timestamp <' + str(lastTime + interval) + ';')
     cursor.execute(query)
     lidarData = cursor.fetchall()[0][0]
 

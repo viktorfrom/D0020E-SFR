@@ -4,7 +4,7 @@ import Tkinter as tk
 import math
 import random
 import rospy
-import config.py
+import config
 from std_msgs.msg import String
 import psycopg2
 import psycopg2.extras
@@ -43,7 +43,7 @@ else:
 
 def callback(msg):
     global newarr
-    newarr = eval('['+msg.data[33: - 2]+']')
+    newarr = eval('[' + msg.data[33: - 2] + ']')
 
 def drawGrid():
     for i in range(0, gridSize):
@@ -59,7 +59,7 @@ def draw(msg):
     dist = 100
     i = 0
 
-    for degree in range(135, (135+len(msg)), 1):        #405
+    for degree in range(135, (135 + len(msg)), 1):        #405
          rad = math.radians(degree)
          dist =  float(msg[-i]) * height * 10 / 50 / 2
          i += 1
@@ -68,9 +68,9 @@ def draw(msg):
                                    height / 2 - dotSize + math.sin(rad) * dist, 
                                    height / 2 + dotSize + math.cos(rad) * dist, 
                                    height / 2 + dotSize + math.sin(rad) * dist, 
-                                   fill="red", tags="obj1tag")
+                                   fill = "red", tags = "obj1tag")
             w.tag_bind(obj1Id, '<ButtonPress-1>',
-            lambda event, distance=msg[-i]:
+            lambda event, distance = msg[-i]:
             onObjectClick(distance))
 
 def HMIListener():
@@ -142,7 +142,8 @@ def replay():
                 print("\nStream ended")
                 print("Database traversed from: 2018-03-08 17:55:08.396775" + "\nto:" + str(newTime))
                 print ("\nFound nearest object at: "+ str(closeDistance))
-                print ("Object moved from: " + str(lidarData[0][0][closeAngleInt]) + " meters to: "+ str(closeDistance)+" meters")
+                print ("Object moved from: " + str(lidarData[0][0][closeAngleInt]) + " meters to: " 
+                       + str(closeDistance) + " meters")
                 print("\n\nRunning live feed")
                 HMIListener()
                 sys.exit(0)
@@ -153,6 +154,7 @@ def replay():
 if __name__ == '__main__':
     master.update()
     print replayVar
+
     if  replayVar:
 	year = int(raw_input("\nInsert year (yyyy)"))
 	month = int(raw_input("\nInsert month (MM)"))
@@ -160,12 +162,13 @@ if __name__ == '__main__':
 	hour = int(raw_input("\nInsert time of day in hours (hh)"))
 	minu = int(raw_input("\nInsert minuets (mm)"))
 	sec = raw_input("\nInsert seconds (SS) (or leave empty)")
+
 	if (sec == ""):
 		sec = 0
 	else:
 		sec = int(sec)	
 	lastTime = datetime(year, month, day, hour, minu, sec, 0)
-        print "Running playback from:  "+str(lastTime)
+        print "Running playback from:  " + str(lastTime)
         replay()
 
     try:
