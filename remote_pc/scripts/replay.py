@@ -10,8 +10,7 @@ from std_msgs.msg import String
 from datetime import datetime
 from datetime import timedelta
 
-conn_string = "host = 'localhost' dbname = 'testdb' user = 'willow' password = 'willow'"
-conn = psycopg2.connect(conn_string)
+conn = psycopg2.connect(config.dbconfiglite())
 cursor = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
 lastTime = datetime(2018, 2, 16, 13, 25, 28, 688503)
 
@@ -24,7 +23,7 @@ def talker():
     rate = rospy.Rate(5) # 100hz
 
     query = ('SELECT timestamp' 
-             'FROM hej' 
+             'FROM lidarData' 
              'WHERE timestamp >= ' +str(lastTime)+ 'AND timestamp <' + str(lastTime + interval) + ';')
     cursor.execute(query)
     timeArr = cursor.fetchall()
@@ -34,7 +33,7 @@ def talker():
     print(len(timeArr))
 
     query = ('SELECT timestamp'
-             'FROM hej' 
+             'FROM lidarData' 
              'WHERE timestamp >= ' +str(lastTime)+ 'AND timestamp <' + str(lastTime + interval) + ';')
     cursor.execute(query)
     lidarData = cursor.fetchall()[0][0]
@@ -42,11 +41,6 @@ def talker():
     i = 0
 
     while i < len(timeArr):
-        newTime = datetime.strptime(str(timeArr[i][0]), timeConv)
-
-	data = str(time.mktime(newTime.timetuple()))[:-1]+str((newTime.microsecond))
-
-
         messageStr = "[" + str(lidarData[0])
 
         for j in range(1, len(lidarData)):

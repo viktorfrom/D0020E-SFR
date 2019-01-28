@@ -1,7 +1,7 @@
 import psycopg2
 import psycopg2.extras
 import sys
-import rospy #ros::ros
+import rospy 
 
 def dbconfig():
 	conn_string = "host = 'localhost' dbname = 'testdb' user = 'willow' password = 'willow'"
@@ -14,3 +14,7 @@ def dbconfig():
 	memory = cursor.fetchone()
 	print "Value: ", memory[0]
 	print "Row:	", memory
+
+def dbconfiglite():
+    conn_string = "host = 'localhost' dbname = 'testdb' user = 'willow' password = 'willow'"
+    return conn_string

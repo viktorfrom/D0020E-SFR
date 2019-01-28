@@ -6,7 +6,7 @@ sudo apt-get install ros-kinetic-desktop-full
 source /opt/ros/kinetic/setup.bash
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
-git clone https://github.com/Janaza/D0020E-FWARM-with-ROS .
+https://github.com/viktorfrom/D0020E-SFR .
 sudo chmod +x ~/catkin_ws/src/remote_pc/scripts/HMIOO.py
 sudo chmod +x ~/catkin_ws/src/remote_pc/scripts/listener.py 
 sudo chmod +x ~/catkin_ws/src/remote_pc/scripts/getFromDB.py

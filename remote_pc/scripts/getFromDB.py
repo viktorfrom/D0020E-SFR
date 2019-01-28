@@ -3,7 +3,7 @@
 import psycopg2
 import psycopg2.extras
 import sys
-import rospy #ros::ros
+import rospy 
  
 def main():
 	# Connect to an existing database
@@ -13,7 +13,7 @@ def main():
 	cur = conn.cursor()
 
 	# Query the database and obtain data as Python objects
-	query = "SELECT * FROM hej;"
+	query = "SELECT * FROM lidarData;"
 	cur.execute(query)
 	row = cur.fetchall()
 	#for rows in row:

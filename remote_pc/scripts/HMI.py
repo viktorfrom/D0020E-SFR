@@ -29,8 +29,7 @@ closeDistance = 51.000
 closeDistance_initValue = 51.000
 closeAngleInt = 0
 
-conn_string = "host = 'localhost' dbname = 'testdb' user = 'willow' password = 'willow'"
-conn = psycopg2.connect(conn_string)
+conn = psycopg2.connect(config.dbconfiglite())
 cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 lastTime = datetime(2018, 3, 8, 17, 55, 8, 1)
 print(chr(27) + "[2J")                          #clear terminal
@@ -93,13 +92,13 @@ def replay():
 
         #Select interval seconds of lidar data
         query = ('SELECT timestamp'
-                'FROM hej'
+                'FROM lidarData'
                 'WHERE timetamp >= ' + str(lastTime) + 'AND timestamp <' + str(lastTime) + ';')
         cursor.execute(query)
         timeArr = (cursor.fetchall())
 
         query = ('SELECT timestamp'
-                'FROM hej'
+                'FROM lidarData'
                 'WHERE timetamp >= ' + str(lastTime) + 'AND timestamp <' + str(lastTime) + ';')
         cursor.execute(query)
         lidarData = cursor.fetchall()
@@ -122,7 +121,6 @@ def replay():
 
             if(waitTime > 0):
                 time.sleep(waitTime)
-
                 messageStr = str(lidarData[i][0][0])
 
                 for j in range(1, len(lidarData[i][0])):
