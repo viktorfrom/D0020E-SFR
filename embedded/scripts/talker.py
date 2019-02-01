@@ -20,16 +20,17 @@ def talker():
     rate = rospy.Rate(hz)
     rospy.loginfo("Node started")
     while not rospy.is_shutdown():
-	i = 0
-	temp = []
-	#removes every half degree from the scan
-	while(i < len(dataarr)):
-		temp.append(dataarr[i])
-		i += 2
-	sensor_data_str ="'" + str(datetime.datetime.utcnow()) + "' , '{" +str(temp)[1: -1]+ "}'"
-	n += 1
-        pub.publish(sensor_data_str)
-        rate.sleep()
+        rospy.Subscriber('scan',LaserScan,callback)
+        i = 0
+        temp = []
+        #removes every half degree from the scan
+        while(i < len(dataarr)):
+            temp.append(dataarr[i])
+            i += 2
+        sensor_data_str ="'" + str(datetime.datetime.utcnow()) + "' , '{" +str(temp)[1: -1]+ "}'"
+        n += 1
+            pub.publish(sensor_data_str)
+            rate.sleep()
 
 if __name__ == '__main__':
     try:
