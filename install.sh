@@ -11,8 +11,8 @@ sudo chmod +x ~/catkin_ws/src/remote/scripts/HMI.py
 sudo chmod +x ~/catkin_ws/src/remote/scripts/listener.py 
 sudo chmod +x ~/catkin_ws/src/remote/scripts/DBConnect.py
 sudo chmod +x ~/catkin_ws/src/embedded/scripts/talker.py 
-sudo chmod +x ~/catkin_ws/src/embedded/scripts/embedded.sh
-sudo chmod +x ~/catkin_ws/src/embedded/scripts/remote.sh 
+sudo chmod +x ~/catkin_ws/src/embedded.sh
+sudo chmod +x ~/catkin_ws/src/remote.sh 
 cd ~/catkin_ws/ 
 catkin_make
 source ~/catkin_ws/devel/setup.bash
