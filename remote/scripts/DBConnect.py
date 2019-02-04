@@ -3,7 +3,7 @@
 import psycopg2
 import psycopg2.extras
 import sys
-import rospy 
+import rospy
  
 def main():
 	# Connect to an existing database
